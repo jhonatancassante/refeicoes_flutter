@@ -9,7 +9,7 @@ class ItemCategoria extends StatelessWidget {
 
   void _categoriaSeleccionada(BuildContext context) {
     Navigator.of(context).pushNamed(
-      AppRoutes.CATEGORIAS_REFEICOES,
+      AppRoutes.categoriasRefeicoes,
       arguments: categoria,
     );
   }

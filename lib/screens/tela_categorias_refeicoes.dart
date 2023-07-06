@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/categoria.dart';
+import '../data/refeicoes_ficticias.dart';
 
 class TelaCategoriasRefeicoes extends StatelessWidget {
   const TelaCategoriasRefeicoes({super.key});
@@ -8,12 +9,19 @@ class TelaCategoriasRefeicoes extends StatelessWidget {
   Widget build(BuildContext context) {
     final categoria = ModalRoute.of(context)!.settings.arguments as Categoria;
 
+    final categoriasRefeicoes = refeicoesFicticias
+        .where((element) => element.categorias.contains(categoria.id))
+        .toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(categoria.titulo),
       ),
-      body: Center(
-        child: Text('Receitas por Categoria ${categoria.id}'),
+      body: ListView.builder(
+        itemCount: categoriasRefeicoes.length,
+        itemBuilder: (context, index) {
+          return Text(categoriasRefeicoes[index].titulo);
+        },
       ),
     );
   }

@@ -8,12 +8,9 @@ class ItemCategoria extends StatelessWidget {
   const ItemCategoria(this.categoria, {super.key});
 
   void _categoriaSeleccionada(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return const TelaCategoriasRefeicoes();
-        },
-      ),
+    Navigator.of(context).pushNamed(
+      '/categorias-refeicoes',
+      arguments: categoria,
     );
   }
 

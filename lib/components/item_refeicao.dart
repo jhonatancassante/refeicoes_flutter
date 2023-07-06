@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import '../models/refeicao.dart';
+import '../utils/app_routes.dart';
 
 class ItemRefeicao extends StatelessWidget {
   final Refeicao refeicao;
 
   const ItemRefeicao(this.refeicao, {super.key});
 
-  void _selecionaRefeicao() {}
+  void _selecionaRefeicao(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      AppRoutes.refeicaoDetalhes,
+      arguments: refeicao,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _selecionaRefeicao,
+      onTap: () => _selecionaRefeicao(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),

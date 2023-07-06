@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/tela_categorias.dart';
 import 'screens/tela_categorias_refeicoes.dart';
+import 'utils/app_routes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -38,9 +39,10 @@ class MyApp extends StatelessWidget {
           color: Colors.pink,
         ),
       ),
-      home: const TelaCategorias(),
       routes: {
-        '/categorias-refeicoes': (context) => TelaCategoriasRefeicoes(),
+        AppRoutes.HOME: (context) => const TelaCategorias(),
+        AppRoutes.CATEGORIAS_REFEICOES: (context) =>
+            const TelaCategoriasRefeicoes(),
       },
     );
   }

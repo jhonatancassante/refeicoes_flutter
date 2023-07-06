@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/categoria.dart';
-import '../screens/tela_categorias_refeicoes.dart';
+import '../utils/app_routes.dart';
 
 class ItemCategoria extends StatelessWidget {
   final Categoria categoria;
@@ -9,7 +9,7 @@ class ItemCategoria extends StatelessWidget {
 
   void _categoriaSeleccionada(BuildContext context) {
     Navigator.of(context).pushNamed(
-      '/categorias-refeicoes',
+      AppRoutes.CATEGORIAS_REFEICOES,
       arguments: categoria,
     );
   }

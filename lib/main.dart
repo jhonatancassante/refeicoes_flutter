@@ -40,8 +40,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: {
-        AppRoutes.HOME: (context) => const TelaCategorias(),
-        AppRoutes.CATEGORIAS_REFEICOES: (context) =>
+        AppRoutes.home: (context) => const TelaCategorias(),
+        AppRoutes.categoriasRefeicoes: (context) =>
             const TelaCategoriasRefeicoes(),
       },
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../models/categoria.dart';
 
 const categoriasFicticias = <Categoria>[

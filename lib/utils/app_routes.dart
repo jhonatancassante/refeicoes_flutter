@@ -1,6 +1,4 @@
-// ignore_for_file: constant_identifier_names
-
 class AppRoutes {
-  static const HOME = '/';
-  static const CATEGORIAS_REFEICOES = '/categorias-refeicoes';
+  static const home = '/';
+  static const categoriasRefeicoes = '/categorias-refeicoes';
 }

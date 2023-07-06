@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/item_categoria.dart';
-import '../data/dados_ficticios.dart';
+import '../data/categorias_ficticias.dart';
 
 class TelaCategorias extends StatelessWidget {
   const TelaCategorias({super.key});

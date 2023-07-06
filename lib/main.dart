@@ -31,6 +31,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         appBarTheme: tema.appBarTheme.copyWith(
+          iconTheme: const IconThemeData(
+            color: Colors.white,
+          ),
           titleTextStyle: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/categoria.dart';
 import '../data/refeicoes_ficticias.dart';
+import '../components/item_refeicao.dart';
 
 class TelaCategoriasRefeicoes extends StatelessWidget {
   const TelaCategoriasRefeicoes({super.key});
@@ -20,7 +21,7 @@ class TelaCategoriasRefeicoes extends StatelessWidget {
       body: ListView.builder(
         itemCount: categoriasRefeicoes.length,
         itemBuilder: (context, index) {
-          return Text(categoriasRefeicoes[index].titulo);
+          return ItemRefeicao(categoriasRefeicoes[index]);
         },
       ),
     );

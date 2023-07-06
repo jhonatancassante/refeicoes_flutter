@@ -10,7 +10,7 @@ class TelaCategorias extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text('Receitas'),
+        title: const Text('Vamos Cozinhar?'),
       ),
       body: GridView(
         padding: const EdgeInsets.all(25),

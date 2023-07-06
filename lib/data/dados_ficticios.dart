@@ -26,7 +26,7 @@ const categoriasFicticias = <Categoria>[
   Categoria(
     id: 'c5',
     titulo: 'Leve & Saudável',
-    cor: Colors.amber,
+    cor: Colors.indigo,
   ),
   Categoria(
     id: 'c6',

@@ -40,4 +40,30 @@ class Refeicao {
     required this.complexidade,
     required this.custo,
   });
+
+  String get textoComplexidade {
+    switch (complexidade) {
+      case Complexidade.simples:
+        return 'Simples';
+      case Complexidade.medio:
+        return 'Normal';
+      case Complexidade.dificil:
+        return 'Difícil';
+      default:
+        return 'Desconhecida';
+    }
+  }
+
+  String get textoCusto {
+    switch (custo) {
+      case Custo.barato:
+        return 'Barato';
+      case Custo.justo:
+        return 'Justo';
+      case Custo.caro:
+        return 'Caro';
+      default:
+        return 'Desconhecida';
+    }
+  }
 }

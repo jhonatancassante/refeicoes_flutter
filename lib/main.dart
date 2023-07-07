@@ -4,11 +4,20 @@ import 'screens/tela_detalhe_refeicao.dart';
 import 'screens/tela_abas.dart';
 import 'screens/tela_configuracoes.dart';
 import 'utils/app_routes.dart';
+import 'models/refeicao.dart';
+import 'data/refeicoes_ficticias.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Refeicao> _refeicoesDisponiveis = refeicoesFicticias;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +56,7 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.home: (context) => const TelaAbas(),
         AppRoutes.categoriasRefeicoes: (context) =>
-            const TelaCategoriasRefeicoes(),
+            TelaCategoriasRefeicoes(_refeicoesDisponiveis),
         AppRoutes.refeicaoDetalhes: (context) => const TelaDetalheRefeicao(),
         AppRoutes.configuracoes: (context) => const TelaConfiguracoes(),
       },

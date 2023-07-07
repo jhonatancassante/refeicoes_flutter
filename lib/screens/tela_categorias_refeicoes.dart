@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import '../models/categoria.dart';
-import '../data/refeicoes_ficticias.dart';
 import '../components/item_refeicao.dart';
+import '../models/refeicao.dart';
 
 class TelaCategoriasRefeicoes extends StatelessWidget {
-  const TelaCategoriasRefeicoes({super.key});
+  final List<Refeicao> refeicoes;
+
+  const TelaCategoriasRefeicoes(this.refeicoes, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final categoria = ModalRoute.of(context)!.settings.arguments as Categoria;
 
-    final categoriasRefeicoes = refeicoesFicticias
+    final categoriasRefeicoes = refeicoes
         .where((element) => element.categorias.contains(categoria.id))
         .toList();
 

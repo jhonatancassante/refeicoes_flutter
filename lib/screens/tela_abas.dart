@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tela_categorias.dart';
 import 'tela_favoritos.dart';
+import '../components/main_drawer.dart';
 
 class TelaAbas extends StatefulWidget {
   const TelaAbas({super.key});
@@ -36,6 +37,7 @@ class _TelaAbasState extends State<TelaAbas> {
         appBar: AppBar(
           title: Text(_telas[_indiceTelaSelecionada]['titulo'] as String),
         ),
+        drawer: const MainDrawer(),
         body: _telas[_indiceTelaSelecionada]['tela'] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selecionaTela,

@@ -111,9 +111,9 @@ class TelaDetalheRefeicao extends StatelessWidget {
         onPressed: () {
           quandoAlternarFavorito(refeicao);
         },
-        child: eFavorita(refeicao)
-            ? const Icon(Icons.favorite)
-            : const Icon(Icons.favorite_border),
+        child: Icon(
+          eFavorita(refeicao) ? Icons.favorite : Icons.favorite_border,
+        ),
       ),
     );
   }

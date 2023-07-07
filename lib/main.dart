@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/tela_categorias_refeicoes.dart';
 import 'screens/tela_detalhe_refeicao.dart';
 import 'screens/tela_abas.dart';
+import 'screens/tela_configuracoes.dart';
 import 'utils/app_routes.dart';
 
 void main() => runApp(const MyApp());
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.categoriasRefeicoes: (context) =>
             const TelaCategoriasRefeicoes(),
         AppRoutes.refeicaoDetalhes: (context) => const TelaDetalheRefeicao(),
+        AppRoutes.configuracoes: (context) => const TelaConfiguracoes(),
       },
     );
   }

@@ -4,7 +4,7 @@ import '../utils/app_routes.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
 
-  Widget _criarItem(IconData icon, String label, Function onTap) {
+  Widget _criarItem(IconData icon, String label, void Function() onTap) {
     return ListTile(
       leading: Icon(
         icon,
@@ -18,7 +18,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () => onTap,
+      onTap: onTap,
     );
   }
 

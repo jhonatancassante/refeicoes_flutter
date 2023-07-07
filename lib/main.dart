@@ -19,6 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Refeicao> _refeicoesDisponiveis = refeicoesFicticias;
+  List<Refeicao> _refeicoesFavoritas = [];
   Configuracoes configuracoes = Configuracoes();
 
   void _filtrarRefeicoes(Configuracoes configuracoes) {
@@ -41,6 +42,20 @@ class _MyAppState extends State<MyApp> {
         ).toList();
       },
     );
+  }
+
+  void _alternarFavorito(Refeicao refeicao) {
+    setState(
+      () {
+        _refeicoesFavoritas.contains(refeicao)
+            ? _refeicoesFavoritas.remove(refeicao)
+            : _refeicoesFavoritas.add(refeicao);
+      },
+    );
+  }
+
+  bool _eFavorita(Refeicao refeicao) {
+    return _refeicoesFavoritas.contains(refeicao);
   }
 
   @override
@@ -78,10 +93,11 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       routes: {
-        AppRoutes.home: (context) => const TelaAbas(),
+        AppRoutes.home: (context) => TelaAbas(_refeicoesFavoritas),
         AppRoutes.categoriasRefeicoes: (context) =>
             TelaCategoriasRefeicoes(_refeicoesDisponiveis),
-        AppRoutes.refeicaoDetalhes: (context) => const TelaDetalheRefeicao(),
+        AppRoutes.refeicaoDetalhes: (context) =>
+            TelaDetalheRefeicao(_alternarFavorito, _eFavorita),
         AppRoutes.configuracoes: (context) =>
             TelaConfiguracoes(configuracoes, _filtrarRefeicoes),
       },

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import '../models/refeicao.dart';
 
 class TelaDetalheRefeicao extends StatelessWidget {
-  const TelaDetalheRefeicao({super.key});
+  final Function(Refeicao) quandoAlternarFavorito;
+  final Function(Refeicao) eFavorita;
+
+  const TelaDetalheRefeicao(this.quandoAlternarFavorito, this.eFavorita,
+      {super.key});
 
   Widget _criarTituloSecao(BuildContext context, String titulo) {
     return Container(
@@ -105,9 +109,11 @@ class TelaDetalheRefeicao extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
-          Navigator.of(context).pop(refeicao.titulo);
+          quandoAlternarFavorito(refeicao);
         },
-        child: const Icon(Icons.favorite),
+        child: eFavorita(refeicao)
+            ? const Icon(Icons.favorite)
+            : const Icon(Icons.favorite_border),
       ),
     );
   }

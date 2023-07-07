@@ -19,6 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Refeicao> _refeicoesDisponiveis = refeicoesFicticias;
+  Configuracoes configuracoes = Configuracoes();
 
   void _filtrarRefeicoes(Configuracoes configuracoes) {
     setState(
@@ -82,7 +83,7 @@ class _MyAppState extends State<MyApp> {
             TelaCategoriasRefeicoes(_refeicoesDisponiveis),
         AppRoutes.refeicaoDetalhes: (context) => const TelaDetalheRefeicao(),
         AppRoutes.configuracoes: (context) =>
-            TelaConfiguracoes(_filtrarRefeicoes),
+            TelaConfiguracoes(configuracoes, _filtrarRefeicoes),
       },
     );
   }

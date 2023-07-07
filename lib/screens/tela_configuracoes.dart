@@ -3,16 +3,25 @@ import '../models/configuracoes.dart';
 import '../components/main_drawer.dart';
 
 class TelaConfiguracoes extends StatefulWidget {
+  final Configuracoes configuracoes;
+
   final Function(Configuracoes) quandoConfiguracoesMudar;
 
-  const TelaConfiguracoes(this.quandoConfiguracoesMudar, {super.key});
+  const TelaConfiguracoes(this.configuracoes, this.quandoConfiguracoesMudar,
+      {super.key});
 
   @override
   State<TelaConfiguracoes> createState() => _TelaConfiguracoesState();
 }
 
 class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
-  var configuracoes = Configuracoes();
+  Configuracoes? configuracoes;
+
+  @override
+  void initState() {
+    super.initState();
+    configuracoes = widget.configuracoes;
+  }
 
   Widget _criarSwitch(
     String titulo,
@@ -26,7 +35,7 @@ class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
       value: valor,
       onChanged: (valor) {
         quandoMudar(valor);
-        widget.quandoConfiguracoesMudar(configuracoes);
+        widget.quandoConfiguracoesMudar(configuracoes!);
       },
       inactiveTrackColor:
           MaterialStateColor.resolveWith((states) => Colors.grey[400]!),
@@ -55,11 +64,11 @@ class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
                 _criarSwitch(
                   'Sem Glútem',
                   'Só exibe refeições sem glútem.',
-                  configuracoes.semGlutem,
+                  configuracoes!.semGlutem,
                   (valor) {
                     setState(
                       () {
-                        configuracoes.semGlutem = valor;
+                        configuracoes!.semGlutem = valor;
                       },
                     );
                   },
@@ -67,11 +76,11 @@ class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
                 _criarSwitch(
                   'Sem Lactose',
                   'Só exibe refeições sem lactose.',
-                  configuracoes.semLactose,
+                  configuracoes!.semLactose,
                   (valor) {
                     setState(
                       () {
-                        configuracoes.semLactose = valor;
+                        configuracoes!.semLactose = valor;
                       },
                     );
                   },
@@ -79,11 +88,11 @@ class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
                 _criarSwitch(
                   'Vagena',
                   'Só exibe refeições vagenas.',
-                  configuracoes.eVegano,
+                  configuracoes!.eVegano,
                   (valor) {
                     setState(
                       () {
-                        configuracoes.eVegano = valor;
+                        configuracoes!.eVegano = valor;
                       },
                     );
                   },
@@ -91,11 +100,11 @@ class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
                 _criarSwitch(
                   'Vegetariana',
                   'Só exibe refeições vegetarianas.',
-                  configuracoes.eVegetariano,
+                  configuracoes!.eVegetariano,
                   (valor) {
                     setState(
                       () {
-                        configuracoes.eVegetariano = valor;
+                        configuracoes!.eVegetariano = valor;
                       },
                     );
                   },

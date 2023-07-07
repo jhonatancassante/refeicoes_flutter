@@ -3,7 +3,9 @@ import '../models/configuracoes.dart';
 import '../components/main_drawer.dart';
 
 class TelaConfiguracoes extends StatefulWidget {
-  const TelaConfiguracoes({super.key});
+  final Function(Configuracoes) quandoConfiguracoesMudar;
+
+  const TelaConfiguracoes(this.quandoConfiguracoesMudar, {super.key});
 
   @override
   State<TelaConfiguracoes> createState() => _TelaConfiguracoesState();
@@ -22,7 +24,10 @@ class _TelaConfiguracoesState extends State<TelaConfiguracoes> {
       title: Text(titulo),
       subtitle: Text(subtitulo),
       value: valor,
-      onChanged: quandoMudar,
+      onChanged: (valor) {
+        quandoMudar(valor);
+        widget.quandoConfiguracoesMudar(configuracoes);
+      },
       inactiveTrackColor:
           MaterialStateColor.resolveWith((states) => Colors.grey[400]!),
     );

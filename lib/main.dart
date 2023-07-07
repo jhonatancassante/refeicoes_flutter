@@ -5,6 +5,7 @@ import 'screens/tela_abas.dart';
 import 'screens/tela_configuracoes.dart';
 import 'utils/app_routes.dart';
 import 'models/refeicao.dart';
+import 'models/configuracoes.dart';
 import 'data/refeicoes_ficticias.dart';
 
 void main() => runApp(const MyApp());
@@ -18,6 +19,28 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Refeicao> _refeicoesDisponiveis = refeicoesFicticias;
+
+  void _filtrarRefeicoes(Configuracoes configuracoes) {
+    setState(
+      () {
+        _refeicoesDisponiveis = refeicoesFicticias.where(
+          (element) {
+            final filtroGlutem = configuracoes.semGlutem && !element.semGlutem;
+            final filtroLactose =
+                configuracoes.semLactose && !element.semLactose;
+            final filtroVegana = configuracoes.eVegano && !element.eVegano;
+            final filtroVegetariana =
+                configuracoes.eVegetariano && !element.eVegetariano;
+
+            return !filtroGlutem &&
+                !filtroLactose &&
+                !filtroVegana &&
+                !filtroVegetariana;
+          },
+        ).toList();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +81,8 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.categoriasRefeicoes: (context) =>
             TelaCategoriasRefeicoes(_refeicoesDisponiveis),
         AppRoutes.refeicaoDetalhes: (context) => const TelaDetalheRefeicao(),
-        AppRoutes.configuracoes: (context) => const TelaConfiguracoes(),
+        AppRoutes.configuracoes: (context) =>
+            TelaConfiguracoes(_filtrarRefeicoes),
       },
     );
   }

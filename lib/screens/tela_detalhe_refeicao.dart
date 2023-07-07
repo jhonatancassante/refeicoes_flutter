@@ -41,66 +41,74 @@ class TelaDetalheRefeicao extends StatelessWidget {
     final refeicao = ModalRoute.of(context)!.settings.arguments as Refeicao;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(refeicao.titulo),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 300,
-                width: double.infinity,
-                child: Image.network(
-                  refeicao.imagemUrl,
-                  fit: BoxFit.cover,
-                ),
+      appBar: AppBar(
+        title: Text(refeicao.titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                refeicao.imagemUrl,
+                fit: BoxFit.cover,
               ),
-              _criarTituloSecao(context, 'Ingredientes'),
-              _criarContainerSecao(
-                ListView.builder(
-                  itemCount: refeicao.ingredientes.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      color: Theme.of(context).colorScheme.secondary,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 5,
-                        ),
-                        child: Text(refeicao.ingredientes[index]),
+            ),
+            _criarTituloSecao(context, 'Ingredientes'),
+            _criarContainerSecao(
+              ListView.builder(
+                itemCount: refeicao.ingredientes.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Theme.of(context).colorScheme.secondary,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
                       ),
-                    );
-                  },
-                ),
+                      child: Text(refeicao.ingredientes[index]),
+                    ),
+                  );
+                },
               ),
-              _criarTituloSecao(context, 'Passos'),
-              _criarContainerSecao(
-                ListView.builder(
-                  itemCount: refeicao.passos.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            child: Text('${index + 1}'),
-                          ),
-                          title: Text(refeicao.passos[index]),
+            ),
+            _criarTituloSecao(context, 'Passos'),
+            _criarContainerSecao(
+              ListView.builder(
+                itemCount: refeicao.passos.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          child: Text('${index + 1}'),
                         ),
-                        Divider(
-                          height: 1,
-                          color: (index + 1) != refeicao.passos.length
-                              ? Colors.black54
-                              : Colors.white,
-                        ),
-                      ],
-                    );
-                  },
-                ),
+                        title: Text(refeicao.passos[index]),
+                      ),
+                      Divider(
+                        height: 1,
+                        color: (index + 1) != refeicao.passos.length
+                            ? Colors.black54
+                            : Colors.white,
+                      ),
+                    ],
+                  );
+                },
               ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        onPressed: () {
+          Navigator.of(context).pop(refeicao.titulo);
+        },
+        child: const Icon(Icons.favorite),
+      ),
+    );
   }
 }

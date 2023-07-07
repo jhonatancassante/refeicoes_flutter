@@ -8,9 +8,19 @@ class ItemRefeicao extends StatelessWidget {
   const ItemRefeicao(this.refeicao, {super.key});
 
   void _selecionaRefeicao(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       AppRoutes.refeicaoDetalhes,
       arguments: refeicao,
+    )
+        .then(
+      (value) {
+        if (value == null) {
+          print('Vazio');
+        } else {
+          print('O nome da refeição é $value.');
+        }
+      },
     );
   }
 
